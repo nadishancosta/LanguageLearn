@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Runner</title>
+    <!-- Link to your CSS file if you created one -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>Run My Continuous Python Script</h1>
+    <p>Click the button below to execute the script on the server.</p>
+
+    <button id="runButton">Run Script</button>
+
+    <div id="status">
+        <h2>Status:</h2>
+        <pre id="output">Waiting for you to start the script...</pre>
+    </div>
+
+    <script>
+        // Get references to the HTML elements
+        const runButton = document.getElementById('runButton');
+        const outputDiv = document.getElementById('output');
+
+        // Listen for a click on the button
+        runButton.addEventListener('click', async () => {
+            // Update UI to show the script is running
+            outputDiv.textContent = 'Executing script... Please wait.';
+            runButton.disabled = true; // Disable the button to prevent multiple clicks
+
+            try {
+                // Use the 'fetch' API to send a request to our Flask backend
+                const response = await fetch('/run-script');
+                
+                // Check if the request was successful
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                // Get the JSON data from the response
+                const data = await response.json();
+
+                // Display the results from the Python script
+                outputDiv.textContent = `Status: ${data.status}\nMessage: ${data.message}\nTimestamp: ${data.timestamp}`;
+
+            } catch (error) {
+                // If something went wrong, display the error
+                outputDiv.textContent = `An error occurred: ${error.message}`;
+                console.error('Fetch error:', error);
+            } finally {
+                // Re-enable the button once the process is complete
+                runButton.disabled = false;
+            }
+        });
+    </script>
+
+</body>
+</html>
