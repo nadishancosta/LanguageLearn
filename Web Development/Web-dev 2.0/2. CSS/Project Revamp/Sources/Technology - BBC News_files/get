@@ -1,0 +1,9 @@
+jsonpCallback({
+  "code" : 0,
+  "ts" : 1657854881,
+  "config" : {
+    "aid" : "tYOkq7qlAI",
+    "enabled" : false,
+    "captcha3_site_key" : null
+  }
+});

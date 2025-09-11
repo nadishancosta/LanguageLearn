@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaScript</title>
+    </head>
+    <body>
+        <p id="text">Hello World!</p>
+        <button id="myButton">Change Text</button>
+        <p id="secondparagraph">JavaScript is ...</p>
+        <button id="my2Button">Append Text</button>
+        <p id="contentpara"></p>
+        <button id="contentButton">Create Text</button>
+
+
+        <p id="moretext">This is some text</p>
+        <button id="styleText">Style This!</button>
+
+
+
+
+        
+        <script type="text/javascript">
+            //Wussup
+            var changetxt = document.getElementById("secondparagraph").innerHTML
+            // document.getElementById("text").innerHTML = "Hello Costa!";
+            document.getElementById("myButton").onclick = function(){
+                document.getElementById("text").innerHTML = "Hello Costa!";
+            }
+            document.getElementById("my2Button").onclick = function(){
+                document.getElementById("secondparagraph").innerHTML = "I think "+changetxt+ " Confusing!";
+            }
+            document.getElementById("contentButton").onclick = function(){
+                document.getElementById("contentpara").innerHTML = "Here I am! This is Me!";
+            }
+            document.getElementById("styleText").onclick = function(){
+                document.getElementById("moretext").style.color = "red";
+                document.getElementById("moretext").style.fontSize = "50px";
+                document.getElementById("moretext").style.display = "none";
+            }
+        </script>
+    </body>
+</html>

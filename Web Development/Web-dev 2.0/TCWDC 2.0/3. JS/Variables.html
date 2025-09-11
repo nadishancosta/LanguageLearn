@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Variables</title>
+    </head>
+    <body>
+        <input id="userinput" type="text">
+        <button id = "Changetext">Change Text</button>
+
+        <p id = "target">This is some text!</p>
+        <script type="text/javascript">
+            var textchange = ""
+            document.getElementById("Changetext").onclick = function(){
+                textchange = document.getElementById("userinput").value;
+                document.getElementById("target").innerHTML = textchange;
+            }
+        </script>
+    </body>
+</html>
